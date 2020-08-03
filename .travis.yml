@@ -6,3 +6,15 @@ before_install:
     - docker build -t apshuk21/docker-react-static-app -f Dev.Dockerfile .
 script:
     - docker run -e CI=true apshuk21/docker-react-static-app npm run test -- --coverage
+
+deploy:
+    provider: elasticbeanstalk
+    region: "ap-south-1"
+    app: "docker-react-static-app"
+    env: "DockerReactStaticApp-env"
+    bucket_name: "elasticbeanstalk-ap-south-1-159560691145"
+    bucket_path: "docker-react-static-app"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
