@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  frontendapp:
+    build:
+      context: .
+      dockerfile: Dev.Dockerfile
+    image: webapp:1
+    ports:
+      - '8000:3000'
+    volumes:
+      - /app/node_modules
+      - ./:/app
+    stdin_open: true
+    tty: true
