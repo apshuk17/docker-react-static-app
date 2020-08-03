@@ -5,4 +5,4 @@ services:
 before_install:
     - docker build -t apshuk21/docker-react-static-app -f Dev.Dockerfile .
 script:
-    docker run -e CI=true apshuk21/docker-react-static-app npm run test -- --coverage
+    - docker run -e CI=true apshuk21/docker-react-static-app npm run test -- --coverage
